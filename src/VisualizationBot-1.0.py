@@ -139,7 +139,7 @@ def submissionKarmaWithTime(submissionList, redditor):
 def main():
     reddit = init()
 
-    user = "cheekykins"  # The user who needs to be analyzed
+    user = "divine_sense"  # The user who needs to be analyzed
     redditor = reddit.redditor(user)
 
     commentList = commentsWithVotes(redditor)  # Plot comments graph
