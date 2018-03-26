@@ -2,16 +2,12 @@ import praw
 import datetime
 from operator import itemgetter
 
-
 from plotly.offline import plot
 import plotly.graph_objs as go
-
 
 def init():
     reddit = praw.Reddit('BOT-CONFIG', user_agent='VisualizationBot-1.0')
     return reddit
-
-
 
 def commentsWithVotes(redditor):
     commentList = []
@@ -31,9 +27,6 @@ def commentsWithVotes(redditor):
 
     plot(data_comments, filename='graphs/' + redditor.name + '_comments.html')
     return commentList
-
-
-
 
 def submissionsWithVotes(redditor):
     submission_preview = []
@@ -57,9 +50,6 @@ def submissionsWithVotes(redditor):
 
     plot(data_submissions, filename='graphs/' + redditor.name + '_submissions.html')
     return submissionList
-
-
-
 
 def getVocabulary(commentList, redditor):
     commonWords = ['the', 'is', 'a', 'i', 'and', 'you', 'to', 'of', 'an', 'it', 'that', 'for', 'in', 'but', 'of', 'its', 'this', 'your', 'with', 'was', 'so',
@@ -92,9 +82,7 @@ def getVocabulary(commentList, redditor):
     )]
 
     plot(data_vocab, filename='graphs/' + redditor.name + '_vocabulary.html')
-
-
-
+    
 def commentKarmaWithTime(commentList, redditor):
     totalKarma = 0
     commentList = commentList[::-1]
@@ -113,8 +101,7 @@ def commentKarmaWithTime(commentList, redditor):
     )]
 
     plot(data_comments, filename='graphs/' + redditor.name + '_commentsWithTime.html')
-
-
+    
 def submissionKarmaWithTime(submissionList, redditor):
     totalKarma = 0
     submissionList = submissionList[::-1]
@@ -133,9 +120,7 @@ def submissionKarmaWithTime(submissionList, redditor):
     )]
 
     plot(data_comments, filename='graphs/' + redditor.name + '_submissionsWithTime.html')
-
-
-
+    
 def main():
     reddit = init()
 
@@ -149,7 +134,5 @@ def main():
     submissionKarmaWithTime(submissionList, redditor)
 
     getVocabulary(commentList, redditor) # Plot vocabulary graph
-
-
-
+    
 main()
